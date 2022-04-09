@@ -1,5 +1,6 @@
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
 import { AddressDisplay, Avatar, ContactPointDisplay, Loading, ResourceName, useMedplum } from '@medplum/ui';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './PatientPage.css';
@@ -93,19 +94,21 @@ export function PatientPage(): JSX.Element {
         <div>Created Date: {patient.meta?.lastUpdated}</div>
         <h3>Demographics</h3>
         <table>
-          <tr>
-            <td>Prefix: {patient?.name?.[0]?.prefix}</td>
-            <td>First: {patient?.name?.[0]?.given?.[0]}</td>
-            <td>Middle: {patient?.name?.[0]?.given?.[1]}</td>
-            <td>Last: {patient?.name?.[0]?.family}</td>
-            <td>Suffix: {patient?.name?.[0]?.suffix}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>Prefix: {patient?.name?.[0]?.prefix}</td>
+              <td>First: {patient?.name?.[0]?.given?.[0]}</td>
+              <td>Middle: {patient?.name?.[0]?.given?.[1]}</td>
+              <td>Last: {patient?.name?.[0]?.family}</td>
+              <td>Suffix: {patient?.name?.[0]?.suffix}</td>
+            </tr>
+          </tbody>
         </table>
         <h3>Orders ({orders?.length})</h3>
         <ul>
           {orders?.map((o, i) => (
             <li key={`order-${i}`}>
-              <a href={`/orders/${o.id}`}>{o.code?.text}</a> ({formatDate(o.meta?.lastUpdated)})
+              <a href={`/ServiceRequest/${o.id}`}>{o.code?.text}</a> ({formatDate(o.meta?.lastUpdated)})
             </li>
           ))}
         </ul>
@@ -113,7 +116,7 @@ export function PatientPage(): JSX.Element {
         <ul>
           {reports?.map((o, i) => (
             <li key={`report-${i}`}>
-              <a href={`/reports/${o.id}`}>{o.code?.text}</a> ({formatDate(o.meta?.lastUpdated)})
+              <a href={`/DiagnosticReport/${o.id}`}>{o.code?.text}</a> ({formatDate(o.meta?.lastUpdated)})
             </li>
           ))}
         </ul>
