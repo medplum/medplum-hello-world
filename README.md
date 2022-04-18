@@ -20,7 +20,7 @@ npm install
 Next, run the app
 
 ```javascript
-npx run dev
+npm run dev
 ```
 
 This app should run on `http://localhost:3000/`
