@@ -1,5 +1,6 @@
 import { Bundle, Patient, Practitioner } from '@medplum/fhirtypes';
 import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/ui';
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 export function HomePage(): JSX.Element {

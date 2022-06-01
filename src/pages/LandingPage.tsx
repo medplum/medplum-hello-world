@@ -1,4 +1,5 @@
 import { Document } from '@medplum/ui';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 export function LandingPage(): JSX.Element {

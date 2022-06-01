@@ -1,4 +1,5 @@
 import { Logo, SignInForm } from '@medplum/ui';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function SignInPage(): JSX.Element {
