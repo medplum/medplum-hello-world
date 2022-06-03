@@ -1,5 +1,5 @@
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
-import { AddressDisplay, Avatar, ContactPointDisplay, Loading, ResourceName, useMedplum } from '@medplum/ui';
+import { AddressDisplay, Avatar, ContactPointDisplay, Loading, ResourceName, useMedplum } from '@medplum/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';

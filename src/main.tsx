@@ -1,11 +1,11 @@
 import { MedplumClient } from '@medplum/core';
-import { MedplumProvider } from '@medplum/ui';
+import { MedplumProvider } from '@medplum/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
-import '@medplum/ui/defaulttheme.css';
-import '@medplum/ui/styles.css';
+import '@medplum/react/defaulttheme.css';
+import '@medplum/react/styles.css';
 import './index.css';
 
 const medplum = new MedplumClient();
