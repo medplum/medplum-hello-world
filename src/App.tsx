@@ -1,5 +1,5 @@
 import { UserConfiguration } from '@medplum/fhirtypes';
-import { Header, useMedplum } from '@medplum/ui';
+import { Header, useMedplum } from '@medplum/react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
@@ -7,6 +7,7 @@ import { PatientPage } from './pages/PatientPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { SignInPage } from './pages/SignInPage';
 import './App.css';
+import React from 'react';
 
 export function App(): JSX.Element | null {
   const navigate = useNavigate();

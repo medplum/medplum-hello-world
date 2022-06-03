@@ -1,5 +1,5 @@
 import { Bundle, Patient, Practitioner } from '@medplum/fhirtypes';
-import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/ui';
+import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
 

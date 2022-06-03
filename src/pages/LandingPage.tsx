@@ -1,4 +1,4 @@
-import { Document } from '@medplum/ui';
+import { Document } from '@medplum/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
