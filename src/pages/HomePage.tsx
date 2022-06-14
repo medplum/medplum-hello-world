@@ -1,16 +1,12 @@
-import { Bundle, Patient, Practitioner } from '@medplum/fhirtypes';
+import { formatGivenName } from '@medplum/core';
+import { HumanName, Patient, Practitioner } from '@medplum/fhirtypes';
 import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/react';
 import React from 'react';
-import { useEffect, useState } from 'react';
 
 export function HomePage(): JSX.Element {
   const medplum = useMedplum();
   const profile = useMedplumProfile() as Practitioner;
-  const [patients, setPatients] = useState<Bundle<Patient>>();
-
-  useEffect(() => {
-    medplum.search<Patient>({ resourceType: 'Patient' }).then(setPatients);
-  }, []);
+  const patients : Patient[] = medplum.searchResources('Patient').read();
 
   if (!patients) {
     return <Loading />;
@@ -18,11 +14,11 @@ export function HomePage(): JSX.Element {
 
   return (
     <Document>
-      <h1>Welcome {profile.name?.[0]?.given?.[0]}</h1>
+      <h1>Welcome {formatGivenName(profile.name?.[0] as HumanName)}</h1>
       <h3>Patients</h3>
-      {patients.entry?.map((e) => (
-        <div key={e.resource?.id}>
-          <ResourceBadge link={true} value={e.resource} />
+      {patients.map((e) => (
+        <div key={e.id}>
+          <ResourceBadge link={true} value={e} />
         </div>
       ))}
     </Document>
