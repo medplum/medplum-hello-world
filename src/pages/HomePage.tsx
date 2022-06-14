@@ -1,12 +1,12 @@
 import { formatGivenName } from '@medplum/core';
-import { HumanName, Practitioner } from '@medplum/fhirtypes';
+import { HumanName, Patient, Practitioner } from '@medplum/fhirtypes';
 import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/react';
 import React from 'react';
 
 export function HomePage(): JSX.Element {
   const medplum = useMedplum();
   const profile = useMedplumProfile() as Practitioner;
-  const patients = medplum.searchResources('Patient', '').read();
+  const patients : Patient[] = medplum.searchResources('Patient').read();
 
   if (!patients) {
     return <Loading />;
