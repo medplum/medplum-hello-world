@@ -25,9 +25,7 @@ export function App(): JSX.Element | null {
     menu: [
       {
         title: 'My Menu',
-        link: [
-          { name: 'Patients', target: '/' },
-        ],
+        link: [{ name: 'Patients', target: '/' }],
       },
     ],
   };
@@ -36,6 +34,8 @@ export function App(): JSX.Element | null {
     <>
       {profile && (
         <Header
+          bgColor="#1a73e8"
+          title="MyCompany"
           onLogo={() => navigate('/')}
           onProfile={() => navigate(`/profile`)}
           onSignOut={() => {
@@ -46,13 +46,13 @@ export function App(): JSX.Element | null {
         />
       )}
       <ErrorBoundary>
-      <Routes>
-        <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/Patient/:id" element={<PatientPage />} />
-        <Route path="/:resourceType/:id" element={<ResourceApplicationPage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/Patient/:id" element={<PatientPage />} />
+          <Route path="/:resourceType/:id" element={<ResourceApplicationPage />} />
+        </Routes>
       </ErrorBoundary>
     </>
   );
