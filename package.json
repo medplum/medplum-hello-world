@@ -8,9 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@medplum/core": "^0.9.20",
-    "@medplum/fhirtypes": "^0.9.20",
-    "@medplum/react": "^0.9.20",
+    "@medplum/core": "^0.9.22",
+    "@medplum/fhirtypes": "^0.9.22",
+    "@medplum/react": "^0.9.22",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   },
