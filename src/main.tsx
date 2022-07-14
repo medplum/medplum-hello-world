@@ -8,7 +8,9 @@ import '@medplum/react/defaulttheme.css';
 import '@medplum/react/styles.css';
 import './index.css';
 
-const medplum = new MedplumClient();
+const medplum = new MedplumClient({
+  onUnauthenticated: () => (window.location.href = '/'),
+});
 
 const container = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(container);
