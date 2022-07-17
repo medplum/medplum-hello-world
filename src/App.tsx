@@ -1,14 +1,13 @@
 import { UserConfiguration } from '@medplum/fhirtypes';
 import { ErrorBoundary, Header, useMedplum } from '@medplum/react';
+import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
 import { PatientPage } from './pages/PatientPage';
 import { ProfilePage } from './pages/ProfilePage';
-import { SignInPage } from './pages/SignInPage';
-import './App.css';
-import React from 'react';
 import { ResourceApplicationPage } from './pages/ResourceApplicationPage';
+import { SignInPage } from './pages/SignInPage';
 
 export function App(): JSX.Element | null {
   const navigate = useNavigate();

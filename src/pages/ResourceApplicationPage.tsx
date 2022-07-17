@@ -1,4 +1,3 @@
-
 import { getDisplayString } from '@medplum/core';
 import { ResourceType } from '@medplum/fhirtypes';
 import { Document, ResourceTable, useMedplum } from '@medplum/react';
