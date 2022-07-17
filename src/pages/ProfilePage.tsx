@@ -1,10 +1,9 @@
 import { getDisplayString } from '@medplum/core';
 import { Practitioner } from '@medplum/fhirtypes';
-import { ResourceTable, useMedplum, useMedplumProfile } from '@medplum/react';
+import { ResourceTable, useMedplumProfile } from '@medplum/react';
 import React from 'react';
 
 export function ProfilePage(): JSX.Element {
-  const medplum = useMedplum();
   const profile = useMedplumProfile() as Practitioner;
 
   return (

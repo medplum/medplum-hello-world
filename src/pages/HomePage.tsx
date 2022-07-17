@@ -6,7 +6,7 @@ import React from 'react';
 export function HomePage(): JSX.Element {
   const medplum = useMedplum();
   const profile = useMedplumProfile() as Practitioner;
-  const patients : Patient[] = medplum.searchResources('Patient').read();
+  const patients: Patient[] = medplum.searchResources('Patient').read();
 
   if (!patients) {
     return <Loading />;

@@ -1,7 +1,6 @@
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
 import { AddressDisplay, Avatar, ContactPointDisplay, Loading, ResourceName, useMedplum } from '@medplum/react';
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './PatientPage.css';
 
@@ -60,7 +59,7 @@ export function PatientPage(): JSX.Element {
       }
     }`;
     medplum.graphql(query).then(setResponse);
-  }, [id]);
+  }, [medplum, id]);
 
   if (!response) {
     return <Loading />;
