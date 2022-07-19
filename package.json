@@ -1,7 +1,8 @@
 {
-  "name": "medplum-hello-world",
+  "name": "foo-clinical",
   "private": true,
   "version": "0.0.0",
+  "description": "Foo Clinical is sample EHR-like application using Medplum. Medplum is a developer platform for medical apps.",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
