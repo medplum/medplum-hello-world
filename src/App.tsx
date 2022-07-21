@@ -1,5 +1,6 @@
+import { getReferenceString } from '@medplum/core';
 import { UserConfiguration } from '@medplum/fhirtypes';
-import { ErrorBoundary, Header, useMedplum } from '@medplum/react';
+import { ErrorBoundary, Header, useMedplum, Loading } from '@medplum/react';
 import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
@@ -14,7 +15,7 @@ export function App(): JSX.Element | null {
   const medplum = useMedplum();
 
   if (medplum.isLoading()) {
-    return null;
+    return <Loading />;
   }
 
   const profile = medplum.getProfile();
@@ -33,9 +34,9 @@ export function App(): JSX.Element | null {
     <>
       {profile && (
         <Header
-          bgColor="#1a73e8"
+          bgColor="#0d9488"
           title="MyCompany"
-          onLogo={() => navigate('/')}
+          onLogo={() => navigate(`/${getReferenceString(profile)}`)}
           onProfile={() => navigate(`/profile`)}
           onSignOut={() => {
             medplum.signOut();
