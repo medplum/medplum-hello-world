@@ -1,12 +1,11 @@
 import { UserConfiguration } from '@medplum/fhirtypes';
-import { ErrorBoundary, Header, useMedplum } from '@medplum/react';
-import React from 'react';
+import { ErrorBoundary, Header, Loading, useMedplum } from '@medplum/react';
+import React, { Suspense } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
-import { PatientPage } from './pages/PatientPage';
 import { ProfilePage } from './pages/ProfilePage';
-import { ResourceApplicationPage } from './pages/ResourceApplicationPage';
+import { ResourcePage } from './pages/ResourcePage';
 import { SignInPage } from './pages/SignInPage';
 
 export function App(): JSX.Element | null {
@@ -45,13 +44,14 @@ export function App(): JSX.Element | null {
         />
       )}
       <ErrorBoundary>
-        <Routes>
-          <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/Patient/:id" element={<PatientPage />} />
-          <Route path="/:resourceType/:id" element={<ResourceApplicationPage />} />
-        </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/:resourceType/:id" element={<ResourcePage />} />
+          </Routes>
+        </Suspense>
       </ErrorBoundary>
     </>
   );
