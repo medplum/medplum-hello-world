@@ -10,7 +10,7 @@ import './index.css';
 
 const medplum = new MedplumClient({
   onUnauthenticated: () => (window.location.href = '/'),
-  // baseUrl: 'http://localhost:5000/', //Uncomment this to run against the server on your localhost
+  // baseUrl: 'http://localhost:8103/', //Uncomment this to run against the server on your localhost
 });
 
 const container = document.getElementById('root') as HTMLDivElement;
