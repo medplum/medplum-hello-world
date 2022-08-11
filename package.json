@@ -5,18 +5,19 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "source-map-explorer": "source-map-explorer dist/assets/*.js --gzip"
   },
   "devDependencies": {
-    "@medplum/core": "0.9.28",
-    "@medplum/fhirtypes": "0.9.28",
-    "@medplum/react": "0.9.28",
-    "@types/react": "18.0.15",
+    "@medplum/core": "0.9.30",
+    "@medplum/fhirtypes": "0.9.30",
+    "@medplum/react": "0.9.30",
+    "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@typescript-eslint/eslint-plugin": "5.31.0",
-    "@typescript-eslint/parser": "5.31.0",
-    "@vitejs/plugin-react": "2.0.0",
-    "eslint": "8.20.0",
+    "@typescript-eslint/eslint-plugin": "5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
+    "@vitejs/plugin-react": "2.0.1",
+    "eslint": "8.21.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-react-hooks": "4.6.0",
@@ -24,7 +25,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "4.7.4",
-    "vite": "3.0.3"
+    "source-map-explorer": "2.5.2",
+    "vite": "3.0.6"
   },
   "prettier": {
     "printWidth": 120,
