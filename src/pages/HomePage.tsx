@@ -1,6 +1,7 @@
+import { Loader } from '@mantine/core';
 import { formatGivenName } from '@medplum/core';
 import { HumanName, Patient, Practitioner } from '@medplum/fhirtypes';
-import { Document, Loading, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/react';
+import { Document, ResourceBadge, useMedplum, useMedplumProfile } from '@medplum/react';
 import React from 'react';
 
 export function HomePage(): JSX.Element {
@@ -9,7 +10,7 @@ export function HomePage(): JSX.Element {
   const patients: Patient[] = medplum.searchResources('Patient').read();
 
   if (!patients) {
-    return <Loading />;
+    return <Loader />;
   }
 
   return (

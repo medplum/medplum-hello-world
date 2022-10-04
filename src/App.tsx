@@ -1,7 +1,7 @@
-import { UserConfiguration } from '@medplum/fhirtypes';
-import { ErrorBoundary, Header, Loading, useMedplum } from '@medplum/react';
+import { AppShell, Button, Group, Header, Loader, Text } from '@mantine/core';
+import { ErrorBoundary, useMedplum } from '@medplum/react';
 import React, { Suspense } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
 import { ProfilePage } from './pages/ProfilePage';
@@ -9,7 +9,6 @@ import { ResourcePage } from './pages/ResourcePage';
 import { SignInPage } from './pages/SignInPage';
 
 export function App(): JSX.Element | null {
-  const navigate = useNavigate();
   const medplum = useMedplum();
 
   if (medplum.isLoading()) {
@@ -18,33 +17,35 @@ export function App(): JSX.Element | null {
 
   const profile = medplum.getProfile();
 
-  const config: UserConfiguration = {
-    resourceType: 'UserConfiguration',
-    menu: [
-      {
-        title: 'My Menu',
-        link: [{ name: 'Patients', target: '/' }],
-      },
-    ],
-  };
-
   return (
-    <>
-      {profile && (
-        <Header
-          bgColor="#1a73e8"
-          title="MyCompany"
-          onLogo={() => navigate('/')}
-          onProfile={() => navigate(`/profile`)}
-          onSignOut={() => {
-            medplum.signOut();
-            navigate('/signin');
-          }}
-          config={config}
-        />
-      )}
+    <AppShell
+      header={
+        profile && (
+          <Header height={60} p="md">
+            <Group position="apart">
+              <Group>
+                <Text>Hello World</Text>
+                <Text>
+                  <Link to="/">Patients</Link>
+                </Text>
+              </Group>
+              <Button
+                size="xs"
+                variant="outline"
+                onClick={() => {
+                  medplum.signOut();
+                  window.location.reload();
+                }}
+              >
+                Sign out
+              </Button>
+            </Group>
+          </Header>
+        )
+      }
+    >
       <ErrorBoundary>
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
             <Route path="/signin" element={<SignInPage />} />
@@ -53,6 +54,6 @@ export function App(): JSX.Element | null {
           </Routes>
         </Suspense>
       </ErrorBoundary>
-    </>
+    </AppShell>
   );
 }

@@ -1,7 +1,9 @@
+import { Loader } from '@mantine/core';
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
-import { AddressDisplay, Avatar, ContactPointDisplay, Loading, ResourceName, useMedplum } from '@medplum/react';
+import { AddressDisplay, ContactPointDisplay, ResourceAvatar, ResourceName, useMedplum } from '@medplum/react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import './PatientPage.css';
 
 interface PatientGraphQLResponse {
@@ -62,7 +64,7 @@ export function PatientPage(): JSX.Element {
   }, [medplum, id]);
 
   if (!response) {
-    return <Loading />;
+    return <Loader />;
   }
 
   const { patient, orders, reports } = response.data;
@@ -71,7 +73,7 @@ export function PatientPage(): JSX.Element {
     <div className="patient-page">
       <div className="patient-sidebar">
         <div className="patient-title">
-          <Avatar value={patient} />
+          <ResourceAvatar value={patient} />
           <ResourceName value={patient} />
         </div>
         <h3>Birth Date</h3>
