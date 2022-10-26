@@ -6,8 +6,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 
-import '@medplum/react/defaulttheme.css';
-import '@medplum/react/styles.css';
 import './index.css';
 
 const medplum = new MedplumClient({
