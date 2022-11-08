@@ -1,6 +1,13 @@
 import { Loader } from '@mantine/core';
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
-import { AddressDisplay, ContactPointDisplay, ResourceAvatar, ResourceName, useMedplum } from '@medplum/react';
+import {
+  AddressDisplay,
+  ContactPointDisplay,
+  Document,
+  ResourceAvatar,
+  ResourceName,
+  useMedplum,
+} from '@medplum/react';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -20,6 +27,8 @@ export function PatientPage(): JSX.Element {
   const [response, setResponse] = useState<PatientGraphQLResponse>();
 
   useEffect(() => {
+    // Use the [FHIR graphQL schema](http://hl7.org/fhir/R4B/graphql.html) to query
+    // multiple resources related to this patient
     const query = `{
       patient: Patient(id: "${id}") {
         resourceType,
@@ -70,7 +79,7 @@ export function PatientPage(): JSX.Element {
   const { patient, orders, reports } = response.data;
 
   return (
-    <div className="patient-page">
+    <Document>
       <div className="patient-sidebar">
         <div className="patient-title">
           <ResourceAvatar value={patient} />
@@ -117,12 +126,14 @@ export function PatientPage(): JSX.Element {
         <ul>
           {reports?.map((o, i) => (
             <li key={`report-${i}`}>
-              <a href={`/DiagnosticReport/${o.id}`}>{o.code?.text}</a> ({formatDate(o.meta?.lastUpdated)})
+              <a href={`/DiagnosticReport/${o.id}`}>
+                {o.code?.text} ({formatDate(o.meta?.lastUpdated)})
+              </a>
             </li>
           ))}
         </ul>
       </div>
-    </div>
+    </Document>
   );
 }
 
