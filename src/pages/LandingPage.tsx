@@ -6,13 +6,10 @@ export function LandingPage(): JSX.Element {
   return (
     <Document>
       <h1>Welcome!</h1>
-      <p>Welcome to this demo site!</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+        This "Hello World" example demonstrates how to build a simple React application that fetches Patient data from
+        Medplum. If you haven't already done so, <a href="https://app.medplum.com/register">register</a> for Medplum
+        Project. After that you can sign into your project by clicking the link below.
       </p>
       <p>
         <Link to="/signin">Sign in</Link>
