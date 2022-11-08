@@ -7,12 +7,11 @@ import React from 'react';
 export function HomePage(): JSX.Element {
   const medplum = useMedplum();
   const profile = useMedplumProfile() as Practitioner;
-  const patients: Patient[] = medplum.searchResources('Patient').read();
+  const patients: Patient[] = medplum.searchResources('Patient', '_sort=-_lastUpdated').read();
 
   if (!patients) {
     return <Loader />;
   }
-
   return (
     <Document>
       <h1>Welcome {formatGivenName(profile.name?.[0] as HumanName)}</h1>
