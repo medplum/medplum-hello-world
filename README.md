@@ -11,9 +11,9 @@ This example app demonstrates the following:
 - Creating a new React app with Vite and TypeScript
 - Adding Medplum dependencies
 - Adding basic URL routing
-- Using the Medplum client to search for FHIR resources
-- Using Medplum GraphQL queries to fetch linked resources
-- Using Medplum React controls to display FHIR data
+- Using the [Medplum client](https://www.medplum.com/docs/sdk/classes/MedplumClient) to search for FHIR resources
+- Using [Medplum GraphQL](https://graphiql.medplum.com/) queries to fetch linked resources
+- Using [Medplum React Components](https://storybook.medplum.com/?path=/docs/medplum-introduction--page) to display FHIR data
 
 ### Getting Started
 
