@@ -1,4 +1,10 @@
-# Medplum Hello World
+<h1 align="center">Medplum Hello World</h1>
+<p align="center">A starter application for using the Medplum platform.</p>
+<p align="center">
+<a href="https://github.com/medplum/medplum-hello-world/blob/main/LICENSE.txt">
+    <img src="https://img.shields.io/badge/license-Apache-blue.svg" />
+  </a>
+</p>
 
 This example app demonstrates the following:
 
@@ -6,21 +12,35 @@ This example app demonstrates the following:
 - Adding Medplum dependencies
 - Adding basic URL routing
 - Using the Medplum client to search for FHIR resources
-- Using Medplum GraphQL queries
+- Using Medplum GraphQL queries to fetch linked resources
 - Using Medplum React controls to display FHIR data
 
-## Getting Started
+### Getting Started
 
-First, install all the packages
+If you haven't already done so, follow the instructions in [this tutorial](https://www.medplum.com/docs/tutorials/app/register) to register a Medplum project to store your data.
 
-```javascript
+[Fork](https://github.com/medplum/medplum-hello-world/fork) and clone the repo.
+
+Next, install the dependencies
+
+```bash
 npm install
 ```
 
-Next, run the app
+Then, run the app
 
-```javascript
+```bash
 npm run dev
 ```
 
 This app should run on `http://localhost:3000/`
+
+### About Medplum
+
+[Medplum](https://www.medplum.com/) is an open-source, API-first EHR. Medplum makes it easy to build healthcare apps quickly with less code.
+
+Medplum supports self-hosting, and provides a [hosted service](https://app.medplum.com/). [Foo Medical Provider](https://provider.foomedical.com/) uses the hosted service as a backend.
+
+- Read our [documentation](https://www.medplum.com/docs)
+- Browse our [react component library](https://docs.medplum.com/storybook/index.html?)
+- Join our [Discord](https://discord.gg/UBAWwvrVeN)
