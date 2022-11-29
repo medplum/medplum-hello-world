@@ -1,3 +1,4 @@
+import { Anchor } from '@mantine/core';
 import { Document } from '@medplum/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,9 @@ export function LandingPage(): JSX.Element {
         Project. After that you can sign into your project by clicking the link below.
       </p>
       <p>
-        <Link to="/signin">Sign in</Link>
+        <Anchor to="/signin" component={Link}>
+          Sign in
+        </Anchor>
       </p>
     </Document>
   );

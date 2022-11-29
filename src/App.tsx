@@ -1,4 +1,4 @@
-import { AppShell, Button, Group, Header, Loader, Text } from '@mantine/core';
+import { Anchor, AppShell, Button, Group, Header, Loader, Text } from '@mantine/core';
 import { ErrorBoundary, useMedplum } from '@medplum/react';
 import React, { Suspense } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
@@ -27,7 +27,9 @@ export function App(): JSX.Element | null {
               <Group>
                 <Text>Hello World</Text>
                 <Text>
-                  <Link to="/">Patients</Link>
+                  <Anchor to="/" component={Link}>
+                    Patients
+                  </Anchor>
                 </Text>
               </Group>
               <Button
