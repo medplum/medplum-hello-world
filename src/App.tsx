@@ -1,5 +1,5 @@
 import { Anchor, AppShell, Button, Group, Header, Loader, Text } from '@mantine/core';
-import { ErrorBoundary, useMedplum } from '@medplum/react';
+import { ErrorBoundary, Logo, useMedplum } from '@medplum/react';
 import React, { Suspense } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
@@ -25,12 +25,12 @@ export function App(): JSX.Element | null {
           <Header height={60} p="md">
             <Group position="apart">
               <Group>
-                <Text>Hello World</Text>
-                <Text>
-                  <Anchor to="/" component={Link}>
-                    Patients
-                  </Anchor>
-                </Text>
+                <Anchor to="/" component={Link}>
+                  <Group spacing={'xs'}>
+                    <Logo size={17} />
+                    <Text>Hello World</Text>
+                  </Group>
+                </Anchor>
               </Group>
               <Button
                 size="xs"
