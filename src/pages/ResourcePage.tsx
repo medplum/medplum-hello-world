@@ -1,6 +1,6 @@
 import { getDisplayString } from '@medplum/core';
 import { Patient, ResourceType } from '@medplum/fhirtypes';
-import { Document, ResourceTable, useMedplum } from '@medplum/react';
+import { Document, ResourceTable, useMedplum, useResource } from '@medplum/react';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PatientHeader } from './PatientHeader';
@@ -10,9 +10,11 @@ import { PatientHeader } from './PatientHeader';
  * It uses the Medplum `<ResourceTable>` component to display a resource.
  */
 export function ResourcePage(): JSX.Element | null {
-  const medplum = useMedplum();
   const { resourceType, id } = useParams();
-  const resource = medplum.readResource(resourceType as ResourceType, id as string).read();
+  const resource = useResource({ resourceType: resourceType as ResourceType, id });
+  if (!resource) {
+    return null;
+  }
   return (
     <>
       {resourceType === 'Patient' && <PatientHeader patient={resource as Patient} />}
