@@ -26,6 +26,8 @@ interface PatientGraphQLResponse {
 export function PatientPage(): JSX.Element {
   const medplum = useMedplum();
   const { id } = useParams();
+  const [tab, setTab] = useState<string | null>('overview');
+
   const [response, setResponse] = useState<PatientGraphQLResponse>();
 
   /**
@@ -75,7 +77,6 @@ export function PatientPage(): JSX.Element {
     }`;
     medplum.graphql(query).then(setResponse);
   }, [medplum, id]);
-  const [tab, setTab] = useState<string | null>('overview');
 
   if (!response) {
     return <Loader />;
