@@ -1,6 +1,6 @@
 import { getDisplayString } from '@medplum/core';
-import { Patient, ResourceType } from '@medplum/fhirtypes';
-import { Document, ResourceTable, useMedplum, useResource } from '@medplum/react';
+import { Patient } from '@medplum/fhirtypes';
+import { Document, ResourceTable, useResource } from '@medplum/react';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { PatientHeader } from './PatientHeader';
@@ -11,7 +11,7 @@ import { PatientHeader } from './PatientHeader';
  */
 export function ResourcePage(): JSX.Element | null {
   const { resourceType, id } = useParams();
-  const resource = useResource({ resourceType: resourceType as ResourceType, id });
+  const resource = useResource({ reference: `${resourceType}/${id}` });
   if (!resource) {
     return null;
   }
