@@ -1,7 +1,7 @@
 import { Anchor, AppShell, Button, Group, Header, Loader, Text } from '@mantine/core';
-import { ErrorBoundary, Logo, useMedplum } from '@medplum/react';
+import { ErrorBoundary, Logo, useMedplum, useMedplumProfile } from '@medplum/react';
 import React, { Suspense } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LandingPage } from './pages/LandingPage';
 import { PatientPage } from './pages/PatientPage';
@@ -11,12 +11,13 @@ import { SignInPage } from './pages/SignInPage';
 
 export function App(): JSX.Element | null {
   const medplum = useMedplum();
+  const location = useLocation();
+  const profile = useMedplumProfile();
+  const navigate = useNavigate();
 
   if (medplum.isLoading()) {
     return null;
   }
-
-  const profile = medplum.getProfile();
 
   return (
     <AppShell
@@ -37,7 +38,7 @@ export function App(): JSX.Element | null {
                 variant="outline"
                 onClick={() => {
                   medplum.signOut();
-                  window.location.reload();
+                  navigate('/signin');
                 }}
               >
                 Sign out
@@ -47,7 +48,7 @@ export function App(): JSX.Element | null {
         )
       }
     >
-      <ErrorBoundary>
+      <ErrorBoundary key={location.key}>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={profile ? <HomePage /> : <LandingPage />} />
