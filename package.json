@@ -14,7 +14,7 @@
     "@mantine/notifications": "5.8.4",
     "@medplum/core": "1.0.6",
     "@medplum/fhirtypes": "1.0.6",
-    "@medplum/react": "1.0.5",
+    "@medplum/react": "1.0.6",
     "@types/node": "^18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
