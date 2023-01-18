@@ -56,6 +56,7 @@ export function App(): JSX.Element | null {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/Patient/:id" element={<PatientPage />} />
             <Route path="/:resourceType/:id" element={<ResourcePage />} />
+            <Route path="/:resourceType/:id/_history/:versionId" element={<ResourcePage />} />
           </Routes>
         </Suspense>
       </ErrorBoundary>
