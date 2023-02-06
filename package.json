@@ -12,7 +12,7 @@
     "@mantine/core": "5.8.4",
     "@mantine/hooks": "5.8.4",
     "@mantine/notifications": "5.8.4",
-    "@medplum/core": "2.0.0",
+    "@medplum/core": "2.0.1",
     "@medplum/fhirtypes": "2.0.0",
     "@medplum/react": "2.0.0",
     "@types/node": "^18.11.9",
