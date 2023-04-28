@@ -1,12 +1,11 @@
 import { Loader, Tabs } from '@mantine/core';
-import { getReferenceString } from '@medplum/core';
+import { formatDate, getReferenceString } from '@medplum/core';
 import { DiagnosticReport, Patient, ServiceRequest } from '@medplum/fhirtypes';
 import {
   AddressDisplay,
   ContactPointDisplay,
   Document,
   PatientTimeline,
-  ResourceAvatar,
   ResourceHistoryTable,
   ResourceName,
   useMedplum,
@@ -14,8 +13,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PatientHeader } from './PatientHeader';
-
-import './PatientPage.css';
 
 interface PatientGraphQLResponse {
   data: {
@@ -94,26 +91,25 @@ export function PatientPage(): JSX.Element {
   return (
     <>
       <PatientHeader patient={patient} key={getReferenceString(patient)} />
-      {/** * Use the Mantine Tabs components to implement a simple tabbed layout */}
+      {/* Use the Mantine Tabs components to implement a simple tabbed layout */}
       <Tabs value={tab} onTabChange={setTab}>
-        <Tabs.List>
+        <Tabs.List bg="white">
           <Tabs.Tab value="overview">Overview</Tabs.Tab>
           <Tabs.Tab value="timeline">Timeline</Tabs.Tab>
           <Tabs.Tab value="history">History</Tabs.Tab>
         </Tabs.List>
-        <Document>
-          <Tabs.Panel value="overview">
-            {/**
-             * You can combine Medplum components with plain HTML to quickly display patient data.
-             * Medplum has out of the box components to render common data types such as
-             *   - Addresses
-             *   - Phone numbers
-             *   - Patient/Provider names
-             *   - Patient/Provider profile photo
-             * */}
+        <Tabs.Panel value="overview">
+          {/*
+           * You can combine Medplum components with plain HTML to quickly display patient data.
+           * Medplum has out of the box components to render common data types such as
+           *   - Addresses
+           *   - Phone numbers
+           *   - Patient/Provider names
+           *   - Patient/Provider profile photo
+           * */}
+          <Document>
             <div className="patient-sidebar">
               <div className="patient-title">
-                <ResourceAvatar value={patient} />
                 <ResourceName value={patient} />
               </div>
               <h3>Birth Date</h3>
@@ -164,29 +160,23 @@ export function PatientPage(): JSX.Element {
                 ))}
               </ul>
             </div>
-          </Tabs.Panel>
-          {/**
-           * The PatientTimeline component displays relevant events related to the patient
-           */}
-          <Tabs.Panel value="timeline">
-            <PatientTimeline patient={patient} />
-          </Tabs.Panel>
-          {/**
-           * The ResourceHistoryTable allows you to audit all the changes that have been made to the Patient resource
-           */}
-          <Tabs.Panel value="history">
+          </Document>
+        </Tabs.Panel>
+        {/*
+         * The PatientTimeline component displays relevant events related to the patient
+         */}
+        <Tabs.Panel value="timeline">
+          <PatientTimeline patient={patient} />
+        </Tabs.Panel>
+        {/*
+         * The ResourceHistoryTable allows you to audit all the changes that have been made to the Patient resource
+         */}
+        <Tabs.Panel value="history">
+          <Document>
             <ResourceHistoryTable resourceType="Patient" id={patient.id} />
-          </Tabs.Panel>
-        </Document>
+          </Document>
+        </Tabs.Panel>
       </Tabs>
     </>
   );
-}
-
-function formatDate(date: string | undefined): string {
-  if (!date) {
-    return '';
-  }
-  const d = new Date(date);
-  return d.toLocaleDateString();
 }
