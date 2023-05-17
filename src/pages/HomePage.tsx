@@ -2,6 +2,7 @@ import { Title } from '@mantine/core';
 import { getReferenceString } from '@medplum/core';
 import { Practitioner } from '@medplum/fhirtypes';
 import { Document, ResourceName, SearchControl, useMedplumNavigate, useMedplumProfile } from '@medplum/react';
+import { Outlet } from 'react-router-dom';
 import React from 'react';
 
 /**
@@ -26,6 +27,7 @@ export function HomePage(): JSX.Element {
         onClick={(e) => navigate(`/${getReferenceString(e.resource)}`)}
         hideToolbar
       />
+      <Outlet />
     </Document>
   );
 }
